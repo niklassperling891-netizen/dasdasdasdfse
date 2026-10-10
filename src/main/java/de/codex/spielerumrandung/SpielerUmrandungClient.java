@@ -6,9 +6,12 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public class SpielerUmrandungClient implements ClientModInitializer {
+    private static final KeyBinding.Category KEY_CATEGORY =
+        KeyBinding.Category.create(Identifier.of("spielerumrandung", "main"));
     private static KeyBinding openMenuKey;
     private static KeyBinding toggleOutlinesKey;
 
@@ -16,9 +19,9 @@ public class SpielerUmrandungClient implements ClientModInitializer {
     public void onInitializeClient() {
         OutlineConfig.load();
         openMenuKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.spielerumrandung.open_menu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_O, "category.spielerumrandung"));
+                "key.spielerumrandung.open_menu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_O, KEY_CATEGORY));
         toggleOutlinesKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.spielerumrandung.toggle", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_P, "category.spielerumrandung"));
+                "key.spielerumrandung.toggle", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_P, KEY_CATEGORY));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openMenuKey.wasPressed()) client.setScreen(new OutlineScreen());
