@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "spielerumrandung",
+  "version": "${version}",
+  "name": "Spieler-Umrandung",
+  "description": "Farbige Spielerumrandungen mit persönlichen Farben für Freunde.",
+  "authors": ["Dein Name"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["de.codex.spielerumrandung.SpielerUmrandungClient"]
+  },
+  "mixins": ["spielerumrandung.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
